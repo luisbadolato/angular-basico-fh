@@ -4,29 +4,29 @@ import { Personaje } from "../interfaces/dbz.interface";
 @Injectable()
 export class DbzService {
 
-    private _personajes: Personaje[] = [
-        {
-          nombre: 'Krilin',
-          poder: 4000
-        },
-        {
-          nombre: 'Goku',
-          poder: 15000
-        },
-        {
-          nombre: 'Vegeta',
-          poder: 8500
-        },
-    ];
-
-    get personajes(): Personaje[] {
-        return [...this._personajes];
+  private _personajes: Personaje[] = [
+    {
+      nombre: 'Krilin',
+      poder: 4000
+    },
+    {
+      nombre: 'Goku',
+      poder: 15000
+    },
+    {
+      nombre: 'Vegeta',
+      poder: 8500
     }
+  ];
 
-    constructor() {}
+  get personajes(): Personaje[] {
+    return [...this._personajes];
+  }
 
-    agregarPersonaje(personaje: Personaje) {
-        this._personajes.push(personaje);
-    }
+  constructor() {}
+
+  agregarPersonaje(personaje: Personaje) {
+    this._personajes.push(personaje);
+  }
 
 }

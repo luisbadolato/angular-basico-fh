@@ -13,10 +13,6 @@ export class PersonajesComponent {
     return this.dbzService.personajes;
   }
 
-  // personajes: Personaje[] = [];
-
-  constructor( private dbzService: DbzService ) {
-    // this.personajes = this.dbzService.personajes; 
-  }
+  constructor( private dbzService: DbzService ) { }
 
 }

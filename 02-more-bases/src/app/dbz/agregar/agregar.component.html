@@ -1,26 +1,19 @@
 <h3>Agregar</h3>
-        <hr>
-        <form (ngSubmit)="agregar()">
-            <input 
-                type="text" 
-                name="nombre"
-                placeholder="Nombre"
-                [(ngModel)]="nuevo.nombre"
-            />
-            <!-- Ye Olde Way of Double Binding Forms -->
-            <!-- (Or "Controlling Forms" as in React) -->
-                <!-- [value]="nuevo.nombre" -->
-                <!-- TO ASSIGN THE VALUE OF A PROPERTY TO THE VALUE OF THE INPUT FIELD -->
-                <!-- (input)="cambiarNombre($event)" -->
-                <!-- TO CAPTURE THE INPUT CHANGE EVENT AND PROCESS IT THROUGH A METHOD -->
-            <!-- [(ngModel)] SAVES US FROM MANUALLY DOING THE TWO WAY DATA BINDING -->
-            <input 
-                type="number"
-                name="poder"
-                placeholder="Poder" 
-                [(ngModel)]="nuevo.poder"
-            />
-            <button type="submit">
-                Agregar
-            </button>
-        </form>
+<hr>
+<form (ngSubmit)="agregar()">
+    <input 
+        type="text" 
+        name="nombre"
+        placeholder="Nombre"
+        [(ngModel)]="nuevo.nombre"
+    />
+    <input 
+        type="number"
+        name="poder"
+        placeholder="Poder" 
+        [(ngModel)]="nuevo.poder"
+    />
+    <button type="submit">
+        Agregar
+    </button>
+</form>
