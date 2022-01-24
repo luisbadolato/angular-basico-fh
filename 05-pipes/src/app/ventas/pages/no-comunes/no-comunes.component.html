@@ -1,0 +1,132 @@
+<div class="text-layout">
+  <h1>Pipes No Comunes</h1>
+  <p>Pipes incluídos en Angular - Usualmente en el Common Modules</p>
+</div>
+
+<div class="grid">
+
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        <strong>Nombre: </strong> {{ nombre }}
+      </p>
+      <p>
+        <strong>Genero: </strong> {{ genero }}
+      </p>
+      
+      <p>
+        Saludos {{ nombre }}, es un placer
+        {{ genero | i18nSelect:invitacionMap }}
+      </p>
+      
+      <button 
+      pButton 
+      label="Cambiar Género"
+      (click)="cambiarGenero()"
+      class="p-button p-button-help">
+      </button>
+      
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+        <strong>Clientes: </strong> {{ clientes.length ? clientes : 'No hay clientes' }}
+      </p>
+      <p>
+        Actualmente {{ clientes.length | i18nPlural:clientesMapa }}
+      </p>
+      <button 
+        pButton 
+        label="Borrar Primer Cliente"
+        (click)="borrarPrimerCliente()"
+        class="p-button p-button-danger">
+      </button>
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+
+      <p>
+        <strong>Arreglo Original</strong>
+        {{ _clientes }}
+      </p>
+
+      <p>
+        <strong>slice:0:2</strong>
+        {{ _clientes | slice:0:2 }}
+      </p>
+      
+      <p>
+        <strong>slice:3:3</strong>
+        {{ _clientes | slice:3:3 }}
+      </p>
+      
+      <p>
+        <strong>slice:3:6</strong>
+        {{ _clientes | slice:3:6 }}
+      </p>
+      
+      <p>
+        <strong>slice:0:-2</strong>
+        {{ _clientes | slice:0:-2 }}
+      </p>
+      
+    </p-fieldset>
+  </div>
+
+  <div class="col md:col-6">
+
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let item of persona | keyvalue">
+          <b>{{ item.key | titlecase }}:</b> {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+    
+  </div>
+  
+  <div class="col md:col-6">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <pre>
+        {{ heroes | json}}
+      </pre>
+    </p-fieldset>ç
+  </div>
+
+  <div class="col md:col-6">
+
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      
+      <pre *ngIf="!(miObservable | async)">
+        Resolviendo Observable
+      </pre>
+      <pre>{{ miObservable | async }}</pre>
+      
+      <pre *ngIf="!(valorPromesa | async)">
+        Resolviendo Promesa
+      </pre>
+      <pre>{{ valorPromesa | async }}</pre>
+
+    </p-fieldset>
+    
+  </div>
+
+</div>
+
+
+                  <!-- ¡¡¡ ATENCIÓN !!! -->
+                  
+      <!-- <p><strong>Arreglo Original:</strong> {{ _clientes }} -->
+      <!-- ANGULAR NO REPRESENTA LOS CAMBIOS DEL ARREGLO AUTOMATICAMENTE AL ACCEDERLO DIRECTAMENTE -->
+
+      <!-- <p><strong>Arreglo Original:</strong> {{ clientes }} -->
+      <!-- DE ESTA FORMA SÍ FUNCIONARÍA AL USAR GETTER + SPREAD -->
+
+      <!-- <span *ngFor="let cliente of _clientes">{{ ' ' + cliente}}</span> -->
+      <!-- AL USAR UN NgIf o NgFor FUNCIONARÍA SIN NECESIDAD DE GETTER + SPREAD-->
+
+                  <!-- ¡¡¡ CIRCULEN !!! -->
