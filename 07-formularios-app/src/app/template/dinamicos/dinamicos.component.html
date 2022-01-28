@@ -1,0 +1,86 @@
+<h2>Template Form: <strong>Dinámicos</strong></h2>
+<hr>
+
+<form (ngSubmit)="guardar()"
+      autocomplete="off"
+      #dynForm="ngForm">
+
+  <!-- Nombre -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input required
+             [(ngModel)]="persona.nombre"
+             name="nombre"
+             class="form-control"
+             placeholder="Nombre del usuario">
+      <span class="form-text text-danger"
+            *ngIf="dynForm.controls['nombre']?.errors && dynForm.controls['nombre']?.touched"
+            >
+        Este campo es obligatorio
+      </span>
+    </div>
+  </div>
+
+  <!-- Agregar Juego -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Coso</label>
+    <div class="col-sm-9">
+
+      <div class="input-group">
+        <input class="form-control"
+               [(ngModel)]="nuevoJuego"
+               (keyup.enter)="agregar()"
+               name="nuevoJuego"
+               placeholder="Agregar juego favorito">
+
+        <button type="button"
+                (click)="agregar()"
+                class="btn btn-outline-info">
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista Juegos Favoritos -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <!-- <input class="form-control mb-1"> -->
+
+      <div class="input-group mb-1" 
+           *ngFor="let item of persona.favoritos; let i = index"
+      >
+        <div class="input-group-prepend">
+          <span class="input-group-text">{{ i+1 }}</span>
+        </div>
+        <input required
+               class="form-control"
+               name="favorito_{{ i }}"
+               [(ngModel)]="item.nombre">
+        <button type="button"
+                (click)="eliminar(i)"
+                class="btn btn-outline-danger">
+          Eliminar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <button type="button"
+              [disabled]="dynForm.invalid"
+              (click)="guardar()"
+              class="btn btn-primary float-end">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>

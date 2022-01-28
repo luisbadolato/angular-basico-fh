@@ -1,0 +1,96 @@
+<h2>Reactive Form: <strong>Switches</strong></h2>
+<hr>
+
+<form [formGroup]="myForm"
+      (ngSubmit)="guardar()">
+
+
+  <!-- RADIOS -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+
+      <div class="form-check">
+        <input type="radio" 
+           class="form-check-input"
+           value="M"
+           formControlName="genero"
+           id="radioMasculino">
+        <label for="radioMasculino" class="form-check-label">
+          Masculino
+        </label>
+      </div>
+          
+      <div class="form-check">
+        <input type="radio" 
+               class="form-check-input"
+               value="F"
+               formControlName="genero"
+               id="radioFemenino">
+        <label for="radioFemenino" class="form-check-label">
+          Femenino
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWITCHES -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9 mt-2">
+
+      <div class="form-check form-switch">
+        <input class="form-check-input"
+               type="checkbox"
+               formControlName="notificaciones"
+               id="flexSwitchCheckChecked">
+        <label class="form-check-label" 
+               for="flexSwitchCheckChecked">
+          Quiero recibir notificaciones
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CHECKBOXES -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9 mt-2">
+
+      <div class="form-check">
+        <input class="form-check-input" 
+               type="checkbox"
+               formControlName="terminos"
+               id="flexCheckDefault">
+        <label class="form-check-label" 
+               for="flexCheckDefault">
+          Acepto los términos y condiciones de uso
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="row">
+    <div class="col-sm-12 mt-3">
+      <button type="submit"
+              [disabled]="myForm.invalid"
+              class="btn col-sm-12 btn-primary">
+        Submit
+      </button>
+    </div>
+  </div>
+
+</form>
+
+
+<h3 class="mt-5">Valor del Formulario:</h3>
+<pre>{{ myForm.value | json }}</pre>
+
+<h3 class="mt-5">Persona:</h3>
+<pre>{{ persona | json }}</pre>
+
+<h4 class="mt-5">Formulario Válido:</h4>
+<pre>{{ myForm.valid | json }}</pre>
