@@ -1,0 +1,9 @@
+<h1 class="mt-4"><strong>Angular Lifecycle</strong></h1>
+<hr>
+
+<button (click)="oculto = !oculto"
+        class="btn btn-primary mt-4 mb-3">
+  {{ oculto ? 'Mostrar' : 'Ocultar' }} Pagina 1
+</button>
+
+<app-pagina1 *ngIf="!oculto"></app-pagina1>
