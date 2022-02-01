@@ -1,0 +1,14 @@
+body {
+    width: 100%;
+}
+
+.container {
+    margin-top: 2rem;
+    /* border: 1px solid red; */
+    height: 100%;
+}
+/* 
+.chart-container {
+    border: 1px solid red;
+    height: 600px;
+} */
