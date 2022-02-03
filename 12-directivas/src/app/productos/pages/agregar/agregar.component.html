@@ -1,0 +1,55 @@
+<h1 class="mt-5">Agregar Producto</h1>
+<hr>
+
+<form [formGroup]="myForm">
+
+    <div class="row g-3 align-items-center mt-4 mb-3">
+        
+        <div class="col-auto">
+            <label class="col-form-label">Nombre:</label>
+        </div>
+    
+        <div class="col-auto">
+            <input class="form-control"
+                   formControlName="nombre">
+        </div>
+    
+        <div class="col-auto">
+            <span error-msg
+                  [msg]="textoMensaje"
+                  [color]="color"
+                  [valido]="!validarCampo('nombre')"
+                  cssClass="form-text">
+            </span>
+        </div>
+    
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h5><strong>Mensaje Error: </strong>{{ this.textoMensaje }}</h5>
+            <button class="btn btn-primary mt-3"
+                    (click)="cambiarMensaje()">
+                Guardar
+            </button>
+            <button class="btn btn-success ms-2 mt-3"
+                    (click)="cambiarColor()">
+                Cambiar Color
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<h4 class="mt-5">Formulario</h4>
+<pre><strong>Valid: </strong>{{ myForm.valid }}</pre>
+<pre><strong>Value: </strong>{{ myForm.value | json }}</pre>
+
+<div class="row mt-5"
+     *customIf="myForm.valid">
+    <div class="col">
+        <div class="alert alert-primary">
+            Todo OK!
+        </div>
+    </div>
+</div>
