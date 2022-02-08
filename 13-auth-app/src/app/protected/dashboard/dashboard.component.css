@@ -1,0 +1,16 @@
+* {
+    margin: 1rem;
+}
+
+button {
+    background-color: lightskyblue;
+    filter: saturate(80%);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+}
+
+button:hover {
+    /* background-color: magenta; */
+    filter: saturate(200%);
+}
